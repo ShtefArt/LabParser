@@ -21,24 +21,19 @@ news =
  csv= CSV.open("data.csv", "w") do |wr|
     #wr << [news.first]
  end
- byebug
+
 news = news.delete_if { |n| n[:time].empty? }
-byebug
+
 puts JSON.pretty_generate(news)
 
 column_names = news.first.keys
     s=CSV.generate do |csv|
     csv << column_names
     news.each do |x|
-    #csv << x.values
+    csv << x.values
   end
 end
 File.write('data.csv', s)
-csv= CSV.open("data.csv", "w") do |wr|
-  wr << [news]
-end
 
-#puts JSON.pretty_generate(players)
 
 byebug
-puts news.inspect
